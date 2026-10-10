@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kotak Masukan — Elaina's Mailbox ✉️</title>
+    <meta name="description" content="Kirimkan pesan dan masukan kamu!" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IM+Fell+English:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* ===== CSS RESET & BASE ===== */
+      *, *::before, *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --ash-light: #d4cfe8;
+        --ash-mid: #a89ec0;
+        --ash-dark: #6b5f8a;
+        --deep-purple: #1a1030;
+        --night-bg: #0e0820;
+        --mystical-blue: #1c1445;
+        --star-gold: #f5d77e;
+        --star-gold-glow: #e8b84b;
+        --witch-green: #7ecb9f;
+        --soft-pink: #e8b4c8;
+        --card-bg: rgba(25, 15, 50, 0.75);
+        --border-glow: rgba(168, 158, 192, 0.4);
+        --text-main: #e8e0f5;
+        --text-sub: #b8aad4;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        min-height: 100vh;
+        background: var(--night-bg);
+        font-family: 'Crimson Pro', serif;
+        color: var(--text-main);
+        overflow-x: hidden;
+        position: relative;
+      }
+
+      /* ===== ANIMATED STARFIELD BACKGROUND ===== */
+      .starfield {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+        overflow: hidden;
+      }
+
+      .starfield::before,
+      .starfield::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image:
+          radial-gradient(1px 1px at 10% 15%, rgba(245,215,126,0.9) 0%, transparent 100%),
+          radial-gradient(1px 1px at 25% 40%, rgba(212,207,232,0.8) 0%, transparent 100%),
+          radial-gradient(1.5px 1.5px at 50% 10%, rgba(245,215,126,0.7) 0%, transparent 100%),
+          radial-gradient(1px 1px at 70% 20%, rgba(212,207,232,0.9) 0%, transparent 100%),
+          radial-gradient(1px 1px at 85% 35%, rgba(126,203,159,0.7) 0%, transparent 100%),
+          radial-gradient(1.5px 1.5px at 15% 65%, rgba(245,215,126,0.6) 0%, transparent 100%),
+          radial-gradient(1px 1px at 40% 75%, rgba(212,207,232,0.8) 0%, transparent 100%),
+          radial-gradient(1px 1px at 60% 55%, rgba(245,215,126,0.7) 0%, transparent 100%),
+          radial-gradient(1.5px 1.5px at 80% 70%, rgba(212,207,232,0.9) 0%, transparent 100%),
+          radial-gradient(1px 1px at 92% 85%, rgba(126,203,159,0.6) 0%, transparent 100%),
+          radial-gradient(1px 1px at 5% 90%, rgba(245,215,126,0.8) 0%, transparent 100%),
+          radial-gradient(1px 1px at 35% 95%, rgba(212,207,232,0.7) 0%, transparent 100%),
+          radial-gradient(1.5px 1.5px at 55% 85%, rgba(245,215,126,0.6) 0%, transparent 100%),
+          radial-gradient(1px 1px at 75% 90%, rgba(212,207,232,0.8) 0%, transparent 100%),
+          radial-gradient(1px 1px at 20% 30%, rgba(232,180,200,0.7) 0%, transparent 100%),
+          radial-gradient(1px 1px at 45% 60%, rgba(245,215,126,0.5) 0%, transparent 100%),
+          radial-gradient(1.5px 1.5px at 65% 45%, rgba(212,207,232,0.9) 0%, transparent 100%),
+          radial-gradient(1px 1px at 88% 55%, rgba(126,203,159,0.6) 0%, transparent 100%),
+          radial-gradient(1px 1px at 30% 80%, rgba(245,215,126,0.7) 0%, transparent 100%),
+          radial-gradient(1px 1px at 95% 25%, rgba(212,207,232,0.8) 0%, transparent 100%);
+        animation: twinkle 4s ease-in-out infinite alternate;
+      }
+
+      .starfield::after {
+        background-image:
+          radial-gradient(1px 1px at 18% 8%, rgba(245,215,126,0.8) 0%, transparent 100%),
+          radial-gradient(1.5px 1.5px at 33% 22%, rgba(212,207,232,0.9) 0%, transparent 100%),
+          radial-gradient(1px 1px at 58% 18%, rgba(126,203,159,0.7) 0%, transparent 100%),
+          radial-gradient(1px 1px at 77% 12%, rgba(245,215,126,0.6) 0%, transparent 100%),
+          radial-gradient(1.5px 1.5px at 42% 50%, rgba(232,180,200,0.8) 0%, transparent 100%),
+          radial-gradient(1px 1px at 12% 48%, rgba(212,207,232,0.7) 0%, transparent 100%),
+          radial-gradient(1px 1px at 68% 38%, rgba(245,215,126,0.9) 0%, transparent 100%),
+          radial-gradient(1px 1px at 22% 62%, rgba(212,207,232,0.6) 0%, transparent 100%),
+          radial-gradient(1.5px 1.5px at 85% 60%, rgba(126,203,159,0.8) 0%, transparent 100%),
+          radial-gradient(1px 1px at 48% 72%, rgba(245,215,126,0.7) 0%, transparent 100%),
+          radial-gradient(1px 1px at 97% 45%, rgba(212,207,232,0.9) 0%, transparent 100%),
+          radial-gradient(1px 1px at 8% 78%, rgba(232,180,200,0.6) 0%, transparent 100%),
+          radial-gradient(1.5px 1.5px at 38% 88%, rgba(245,215,126,0.8) 0%, transparent 100%),
+          radial-gradient(1px 1px at 62% 92%, rgba(212,207,232,0.7) 0%, transparent 100%),
+          radial-gradient(1px 1px at 82% 82%, rgba(126,203,159,0.5) 0%, transparent 100%);
+        animation: twinkle 6s ease-in-out infinite alternate-reverse;
+        animation-delay: -2s;
+      }
+
+      @keyframes twinkle {
+        0% { opacity: 0.5; transform: scale(1); }
+        100% { opacity: 1; transform: scale(1.02); }
+      }
+
+      /* ===== NEBULA / AURORA BACKGROUND ===== */
+      .aurora {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+        background:
+          radial-gradient(ellipse 80% 50% at 20% 20%, rgba(107,95,138,0.25) 0%, transparent 60%),
+          radial-gradient(ellipse 60% 40% at 80% 10%, rgba(28,20,69,0.4) 0%, transparent 55%),
+          radial-gradient(ellipse 70% 60% at 50% 100%, rgba(107,95,138,0.2) 0%, transparent 50%),
+          radial-gradient(ellipse 50% 50% at 90% 80%, rgba(126,203,159,0.1) 0%, transparent 45%),
+          radial-gradient(ellipse 40% 30% at 10% 70%, rgba(232,180,200,0.1) 0%, transparent 40%);
+        animation: auroraShift 12s ease-in-out infinite alternate;
+      }
+
+      @keyframes auroraShift {
+        0% { transform: translateY(0) scale(1); filter: hue-rotate(0deg); }
+        100% { transform: translateY(-20px) scale(1.03); filter: hue-rotate(15deg); }
+      }
+
+      /* ===== FLOATING MAGIC PARTICLES ===== */
+      .particles {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 1;
+        overflow: hidden;
+      }
+
+      .particle {
+        position: absolute;
+        border-radius: 50%;
+        animation: floatUp linear infinite;
+        opacity: 0;
+      }
+
+      @keyframes floatUp {
+        0% { opacity: 0; transform: translateY(100vh) rotate(0deg) scale(0); }
+        10% { opacity: 1; }
+        90% { opacity: 0.6; }
+        100% { opacity: 0; transform: translateY(-100px) rotate(720deg) scale(1.5); }
+      }
+
+      /* ===== MAGIC ORBS (3D FLOATING) ===== */
+      .magic-orb {
+        position: fixed;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 0;
+        filter: blur(1px);
+        animation: orbFloat ease-in-out infinite alternate;
+      }
+
+      .magic-orb-1 {
+        width: 180px; height: 180px;
+        background: radial-gradient(circle at 35% 35%, rgba(212,207,232,0.3) 0%, rgba(107,95,138,0.15) 50%, transparent 70%);
+        top: 5%; left: -5%;
+        box-shadow: 0 0 60px rgba(168,158,192,0.2), inset 0 0 40px rgba(212,207,232,0.1);
+        animation-duration: 8s;
+      }
+
+      .magic-orb-2 {
+        width: 120px; height: 120px;
+        background: radial-gradient(circle at 40% 30%, rgba(245,215,126,0.25) 0%, rgba(232,184,75,0.1) 50%, transparent 70%);
+        top: 60%; right: -3%;
+        box-shadow: 0 0 40px rgba(245,215,126,0.15), inset 0 0 30px rgba(245,215,126,0.1);
+        animation-duration: 10s;
+        animation-delay: -3s;
+      }
+
+      .magic-orb-3 {
+        width: 90px; height: 90px;
+        background: radial-gradient(circle at 35% 35%, rgba(126,203,159,0.2) 0%, rgba(126,203,159,0.08) 50%, transparent 70%);
+        bottom: 10%; left: 10%;
+        box-shadow: 0 0 30px rgba(126,203,159,0.1);
+        animation-duration: 7s;
+        animation-delay: -5s;
+      }
+
+      @keyframes orbFloat {
+        0% { transform: translateY(0) translateX(0) rotate(0deg); }
+        100% { transform: translateY(-30px) translateX(15px) rotate(10deg); }
+      }
+
+      /* ===== MAIN LAYOUT ===== */
+      .page-wrapper {
+        position: relative;
+        z-index: 2;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem 1rem;
+      }
+
+      /* ===== HEADER / TITLE AREA ===== */
+      .site-header {
+        text-align: center;
+        margin-bottom: 2.5rem;
+        animation: fadeInDown 1s ease both;
+      }
+
+      @keyframes fadeInDown {
+        from { opacity: 0; transform: translateY(-40px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .witch-hat-icon {
+        font-size: 3.5rem;
+        display: block;
+        margin-bottom: 0.5rem;
+        filter: drop-shadow(0 0 20px rgba(245,215,126,0.6));
+        animation: hatFloat 4s ease-in-out infinite;
+      }
+
+      @keyframes hatFloat {
+        0%, 100% { transform: translateY(0) rotate(-3deg); filter: drop-shadow(0 0 20px rgba(245,215,126,0.6)); }
+        50% { transform: translateY(-10px) rotate(3deg); filter: drop-shadow(0 0 35px rgba(245,215,126,0.9)); }
+      }
+
+      .site-title {
+        font-family: 'Cinzel Decorative', cursive;
+        font-size: clamp(1.4rem, 4vw, 2.4rem);
+        font-weight: 700;
+        background: linear-gradient(135deg, #f5d77e 0%, #d4cfe8 40%, #f5d77e 70%, #e8b4c8 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: none;
+        margin-bottom: 0.5rem;
+        letter-spacing: 0.03em;
+        filter: drop-shadow(0 0 20px rgba(245,215,126,0.3));
+      }
+
+      .site-subtitle {
+        font-family: 'IM Fell English', serif;
+        font-style: italic;
+        font-size: clamp(0.9rem, 2.5vw, 1.15rem);
+        color: var(--ash-mid);
+        letter-spacing: 0.05em;
+        opacity: 0.85;
+      }
+
+      .divider {
+        width: 200px;
+        height: 1px;
+        margin: 1rem auto;
+        background: linear-gradient(90deg, transparent, var(--star-gold), var(--ash-mid), var(--star-gold), transparent);
+        opacity: 0.6;
+        position: relative;
+      }
+
+      .divider::before, .divider::after {
+        content: '✦';
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--star-gold);
+        font-size: 0.6rem;
+        opacity: 0.8;
+      }
+      .divider::before { left: -8px; }
+      .divider::after { right: -8px; }
+
+      /* ===== 3D CARD ===== */
+      .card-scene {
+        perspective: 1200px;
+        width: 100%;
+        max-width: 560px;
+        animation: fadeInUp 1s ease 0.3s both;
+      }
+
+      @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(50px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .card-3d {
+        background: var(--card-bg);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid var(--border-glow);
+        border-radius: 24px;
+        padding: 2.5rem 2.5rem 2rem;
+        position: relative;
+        transform-style: preserve-3d;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow:
+          0 30px 80px rgba(0,0,0,0.6),
+          0 0 0 1px rgba(168,158,192,0.1),
+          inset 0 1px 0 rgba(212,207,232,0.15),
+          inset 0 -1px 0 rgba(0,0,0,0.2),
+          0 0 60px rgba(107,95,138,0.15);
+      }
+
+      .card-3d:hover {
+        transform: rotateX(2deg) rotateY(-1deg) translateY(-5px);
+        box-shadow:
+          0 50px 100px rgba(0,0,0,0.7),
+          0 0 0 1px rgba(168,158,192,0.2),
+          inset 0 1px 0 rgba(212,207,232,0.2),
+          0 0 80px rgba(107,95,138,0.25),
+          0 0 120px rgba(245,215,126,0.1);
+      }
+
+      /* Top edge shimmer */
+      .card-3d::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 5%; right: 5%;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(245,215,126,0.5), rgba(212,207,232,0.7), rgba(245,215,126,0.5), transparent);
+        border-radius: 50%;
+      }
+
+      /* Inner glow */
+      .card-3d::after {
+        content: '';
+        position: absolute;
+        inset: 1px;
+        border-radius: 23px;
+        background: linear-gradient(135deg, rgba(212,207,232,0.05) 0%, transparent 50%, rgba(107,95,138,0.05) 100%);
+        pointer-events: none;
+      }
+
+      /* Corner runes */
+      .rune-corner {
+        position: absolute;
+        font-size: 0.75rem;
+        color: var(--star-gold);
+        opacity: 0.4;
+        font-family: 'IM Fell English', serif;
+        animation: runePulse 3s ease-in-out infinite;
+      }
+      .rune-corner:nth-child(1) { top: 12px; left: 16px; animation-delay: 0s; }
+      .rune-corner:nth-child(2) { top: 12px; right: 16px; animation-delay: 0.75s; }
+      .rune-corner:nth-child(3) { bottom: 12px; left: 16px; animation-delay: 1.5s; }
+      .rune-corner:nth-child(4) { bottom: 12px; right: 16px; animation-delay: 2.25s; }
+
+      @keyframes runePulse {
+        0%, 100% { opacity: 0.3; transform: scale(1); }
+        50% { opacity: 0.7; transform: scale(1.1); }
+      }
+
+      /* ===== CARD HEADER ===== */
+      .card-title {
+        font-family: 'Cinzel Decorative', cursive;
+        font-size: clamp(0.85rem, 2.5vw, 1.1rem);
+        color: var(--star-gold);
+        text-align: center;
+        margin-bottom: 0.3rem;
+        letter-spacing: 0.06em;
+        text-shadow: 0 0 20px rgba(245,215,126,0.5);
+      }
+
+      .card-desc {
+        font-family: 'IM Fell English', serif;
+        font-style: italic;
+        font-size: 0.95rem;
+        color: var(--text-sub);
+        text-align: center;
+        margin-bottom: 1.8rem;
+        line-height: 1.6;
+      }
+
+      /* ===== FORM ELEMENTS ===== */
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      label {
+        display: block;
+        font-family: 'Cinzel Decorative', cursive;
+        font-size: 0.72rem;
+        font-weight: 400;
+        color: var(--ash-light);
+        margin-bottom: 0.6rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      label .optional-tag {
+        font-family: 'Crimson Pro', serif;
+        font-style: italic;
+        font-size: 0.75rem;
+        color: var(--ash-dark);
+        text-transform: none;
+        letter-spacing: 0;
+        margin-left: 0.4rem;
+      }
+
+      .label-icon {
+        margin-right: 0.4rem;
+        font-style: normal;
+      }
+
+      .input-wrapper {
+        position: relative;
+      }
+
+      input[type="text"],
+      textarea {
+        width: 100%;
+        background: rgba(10, 5, 30, 0.6);
+        border: 1px solid rgba(168,158,192,0.3);
+        border-radius: 12px;
+        padding: 0.9rem 1.1rem;
+        color: var(--text-main);
+        font-family: 'Crimson Pro', serif;
+        font-size: 1.05rem;
+        outline: none;
+        transition: all 0.3s ease;
+        position: relative;
+        box-shadow: inset 0 2px 8px rgba(0,0,0,0.3), 0 0 0 0 transparent;
+      }
+
+      input[type="text"]::placeholder,
+      textarea::placeholder {
+        color: rgba(168,158,192,0.4);
+        font-style: italic;
+      }
+
+      input[type="text"]:focus,
+      textarea:focus {
+        border-color: rgba(212,207,232,0.6);
+        background: rgba(15, 8, 40, 0.7);
+        box-shadow:
+          inset 0 2px 8px rgba(0,0,0,0.3),
+          0 0 0 3px rgba(168,158,192,0.15),
+          0 0 20px rgba(168,158,192,0.1);
+      }
+
+      /* Glow line on focus */
+      .input-wrapper::after {
+        content: '';
+        position: absolute;
+        bottom: 1px;
+        left: 5%; right: 5%;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--star-gold), transparent);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        border-radius: 50%;
+      }
+
+      .input-wrapper:focus-within::after {
+        opacity: 0.6;
+      }
+
+      textarea {
+        resize: vertical;
+        min-height: 130px;
+        line-height: 1.6;
+      }
+
+      /* ===== SUBMIT BUTTON ===== */
+      .submit-btn {
+        width: 100%;
+        padding: 1rem 2rem;
+        background: linear-gradient(135deg, #4a3870 0%, #6b5f8a 40%, #4a3870 100%);
+        border: 1px solid rgba(212,207,232,0.3);
+        border-radius: 12px;
+        color: var(--ash-light);
+        font-family: 'Cinzel Decorative', cursive;
+        font-size: 0.85rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 20px rgba(74,56,112,0.4), 0 0 0 1px rgba(212,207,232,0.1);
+        margin-top: 0.5rem;
+      }
+
+      .submit-btn::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(245,215,126,0.1) 0%, transparent 50%, rgba(212,207,232,0.05) 100%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .submit-btn:hover::before {
+        opacity: 1;
+      }
+
+      .submit-btn::after {
+        content: '';
+        position: absolute;
+        top: 0; left: -100%;
+        width: 100%; height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(245,215,126,0.15), transparent);
+        transition: left 0.5s ease;
+      }
+
+      .submit-btn:hover::after {
+        left: 100%;
+      }
+
+      .submit-btn:hover {
+        background: linear-gradient(135deg, #5a4880 0%, #7b6f9a 40%, #5a4880 100%);
+        border-color: rgba(212,207,232,0.5);
+        box-shadow: 0 8px 30px rgba(107,95,138,0.5), 0 0 30px rgba(168,158,192,0.2);
+        transform: translateY(-2px);
+        color: #f0eaff;
+      }
+
+      .submit-btn:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 10px rgba(74,56,112,0.4);
+      }
+
+      .submit-btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      .btn-content {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.6rem;
+      }
+
+      .btn-icon {
+        font-size: 1rem;
+        transition: transform 0.3s ease;
+      }
+
+      .submit-btn:hover .btn-icon {
+        transform: rotate(15deg) scale(1.1);
+      }
+
+      /* ===== FOOTER TEXT ===== */
+      .form-footer {
+        text-align: center;
+        margin-top: 1.5rem;
+        padding-top: 1.2rem;
+        border-top: 1px solid rgba(168,158,192,0.15);
+        font-family: 'IM Fell English', serif;
+        font-style: italic;
+        font-size: 0.85rem;
+        color: var(--ash-dark);
+        line-height: 1.6;
+      }
+
+      .elaina-quote {
+        color: var(--ash-mid);
+        opacity: 0.8;
+      }
+
+      /* ===== SITE FOOTER ===== */
+      .site-footer {
+        text-align: center;
+        margin-top: 2rem;
+        font-family: 'IM Fell English', serif;
+        font-style: italic;
+        font-size: 0.8rem;
+        color: rgba(107,95,138,0.6);
+        animation: fadeIn 1.5s ease 0.8s both;
+        letter-spacing: 0.05em;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+
+      /* ===== MODAL ===== */
+      .modal-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        background: rgba(5, 2, 20, 0.7);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.4s ease;
+      }
+
+      .modal-overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .modal-box {
+        background: linear-gradient(135deg, rgba(20,12,50,0.95) 0%, rgba(30,18,65,0.95) 100%);
+        border: 1px solid rgba(212,207,232,0.25);
+        border-radius: 24px;
+        padding: 3rem 2.5rem;
+        max-width: 440px;
+        width: 100%;
+        text-align: center;
+        position: relative;
+        transform: scale(0.7) translateY(30px);
+        transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        box-shadow:
+          0 40px 100px rgba(0,0,0,0.8),
+          0 0 0 1px rgba(168,158,192,0.1),
+          inset 0 1px 0 rgba(212,207,232,0.1),
+          0 0 60px rgba(107,95,138,0.2);
+      }
+
+      .modal-overlay.active .modal-box {
+        transform: scale(1) translateY(0);
+      }
+
+      /* Modal sparkles */
+      .modal-sparkle {
+        position: absolute;
+        pointer-events: none;
+        animation: sparklePop 2s ease-in-out infinite;
+      }
+
+      .modal-sparkle::before {
+        content: '✦';
+        font-size: 1rem;
+        color: var(--star-gold);
+        opacity: 0.7;
+      }
+
+      .modal-sparkle:nth-child(1) { top: 10px; left: 20px; animation-delay: 0s; }
+      .modal-sparkle:nth-child(2) { top: 10px; right: 20px; animation-delay: 0.5s; }
+      .modal-sparkle:nth-child(3) { bottom: 10px; left: 20px; animation-delay: 1s; }
+      .modal-sparkle:nth-child(4) { bottom: 10px; right: 20px; animation-delay: 1.5s; }
+
+      @keyframes sparklePop {
+        0%, 100% { opacity: 0.4; transform: scale(1) rotate(0deg); }
+        50% { opacity: 1; transform: scale(1.3) rotate(180deg); }
+      }
+
+      .modal-emoji {
+        font-size: 4rem;
+        display: block;
+        margin-bottom: 1rem;
+        animation: emojiFloat 3s ease-in-out infinite;
+        filter: drop-shadow(0 0 20px rgba(245,215,126,0.5));
+      }
+
+      @keyframes emojiFloat {
+        0%, 100% { transform: translateY(0) rotate(-5deg); }
+        50% { transform: translateY(-12px) rotate(5deg); }
+      }
+
+      .modal-title {
+        font-family: 'Cinzel Decorative', cursive;
+        font-size: clamp(1rem, 3vw, 1.3rem);
+        color: var(--star-gold);
+        margin-bottom: 0.8rem;
+        text-shadow: 0 0 20px rgba(245,215,126,0.4);
+        letter-spacing: 0.05em;
+      }
+
+      .modal-msg {
+        font-family: 'Crimson Pro', serif;
+        font-size: 1.1rem;
+        color: var(--text-sub);
+        line-height: 1.7;
+        margin-bottom: 1.8rem;
+      }
+
+      .modal-msg strong {
+        color: var(--ash-light);
+      }
+
+      .modal-close-btn {
+        background: linear-gradient(135deg, #4a3870 0%, #6b5f8a 100%);
+        border: 1px solid rgba(212,207,232,0.3);
+        border-radius: 10px;
+        padding: 0.7rem 2rem;
+        color: var(--ash-light);
+        font-family: 'Cinzel Decorative', cursive;
+        font-size: 0.75rem;
+        font-weight: 400;
+        letter-spacing: 0.08em;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(74,56,112,0.4);
+      }
+
+      .modal-close-btn:hover {
+        background: linear-gradient(135deg, #5a4880 0%, #7b6f9a 100%);
+        border-color: rgba(212,207,232,0.5);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(107,95,138,0.5);
+        color: #f0eaff;
+      }
+
+      /* ===== LOADING STATE ON BUTTON ===== */
+      .spinner {
+        width: 18px;
+        height: 18px;
+        border: 2px solid rgba(212,207,232,0.3);
+        border-top-color: var(--ash-light);
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+        display: none;
+      }
+
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+
+      .submit-btn.loading .spinner { display: block; }
+      .submit-btn.loading .btn-text { display: none; }
+      .submit-btn.loading .btn-icon { display: none; }
+
+      /* ===== MAGIC LINE SEPARATOR ===== */
+      .magic-sep {
+        text-align: center;
+        color: var(--ash-dark);
+        font-size: 0.7rem;
+        letter-spacing: 0.3em;
+        margin: 0.8rem 0;
+        opacity: 0.5;
+      }
+
+      /* ===== RESPONSIVE ===== */
+      @media (max-width: 480px) {
+        .card-3d {
+          padding: 2rem 1.5rem 1.5rem;
+        }
+        .card-3d:hover {
+          transform: none;
+        }
+      }
+
+      /* ===== SCROLL ANIMATION ===== */
+      .fade-in {
+        opacity: 0;
+        animation: fadeInUp 0.8s ease forwards;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Backgrounds -->
+    <div class="starfield"></div>
+    <div class="aurora"></div>
+    <div class="magic-orb magic-orb-1"></div>
+    <div class="magic-orb magic-orb-2"></div>
+    <div class="magic-orb magic-orb-3"></div>
+
+    <!-- Floating particles (generated via JS) -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Success Modal -->
+    <div class="modal-overlay" id="successModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-box">
+        <div class="modal-sparkle"></div>
+        <div class="modal-sparkle"></div>
+        <div class="modal-sparkle"></div>
+        <div class="modal-sparkle"></div>
+
+        <span class="modal-emoji"><img width="150px" height="150px" src="elaina.gif"></span>
+
+        <h2 class="modal-title" id="modalTitle">Pesan Diterima!</h2>
+        <p class="modal-msg">
+          <strong>Terima kasih atas masukannya!</strong><br />
+          Elaina telah menerima pesanmu. Semoga perjalananmu selalu dipenuhi keajaiban ✨
+        </p>
+
+        <button class="modal-close-btn" id="modalCloseBtn" onclick="closeModal()">
+          ✦ Tutup ✦
+        </button>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="page-wrapper">
+
+      <!-- Site Header -->
+      <header class="site-header">
+        <span class="witch-hat-icon"><img width="100px" height="100px" src="elaina.gif"></span>
+        <h1 class="site-title">Elaina's Mailbox</h1>
+        <div class="divider"></div>
+        <p class="site-subtitle">~ Titipkan pesanmu pada sang penyihir abu-abu ~</p>
+      </header>
+
+      <!-- Form Card -->
+      <div class="card-scene">
+        <div class="card-3d" id="card3d">
+          <!-- Rune corners -->
+          <span class="rune-corner" aria-hidden="true">ᚱ</span>
+          <span class="rune-corner" aria-hidden="true">ᚹ</span>
+          <span class="rune-corner" aria-hidden="true">ᛗ</span>
+          <span class="rune-corner" aria-hidden="true">ᚦ</span>
+
+          <p class="card-title">Kotak Masukan</p>
+          <p class="card-desc">
+            Sampaikan pikiranmu padaku, pelancong. Setiap kata adalah cahaya dalam perjalanan panjang ini.
+          </p>
+
+          <form id="feedbackForm" action="https://api.staticforms.xyz/submit" method="POST">
+            <!-- StaticForms API Key -->
+            <input type="hidden" name="accessKey" value="sf_f64a778a58100df036669c87" />
+
+            <!-- Redirect (stay on same page, handled by JS) -->
+            <input type="hidden" name="redirectTo" value="about:blank" id="redirectTarget" />
+
+            <!-- Name Field -->
+            <div class="form-group">
+              <label for="name">
+                <span class="label-icon" aria-hidden="true">✦</span>
+                Nama
+                <span class="optional-tag">(opsional)</span>
+              </label>
+              <div class="input-wrapper">
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Siapa namamu, pelancong?"
+                  autocomplete="name"
+                />
+              </div>
+            </div>
+
+            <!-- Message Field -->
+            <div class="form-group">
+              <label for="message">
+                <span class="label-icon" aria-hidden="true">✦</span>
+                Pesan Masukan
+              </label>
+              <div class="input-wrapper">
+                <textarea
+                  id="message"
+                  name="message"
+                  placeholder="Tuliskan pesanmu di sini... Setiap kata sangat berarti bagiku."
+                  required
+                  rows="5"
+                ></textarea>
+              </div>
+            </div>
+
+            <!-- Honeypot (anti-spam) -->
+            <input type="text" name="honeypot" style="display:none" tabindex="-1" autocomplete="off" />
+
+            <!-- Submit Button -->
+            <button type="submit" class="submit-btn" id="submitBtn">
+              <span class="btn-content">
+                <span class="spinner"></span>
+                <span class="btn-icon" aria-hidden="true">✉️</span>
+                <span class="btn-text">Kirim Pesan</span>
+              </span>
+            </button>
+          </form>
+
+          <div class="form-footer">
+            <p class="elaina-quote">
+              "Pergi ke tempat yang belum pernah kukunjungi,<br />
+              melihat hal-hal yang belum pernah kulihat."
+            </p>
+            <p class="magic-sep" aria-hidden="true">— Elaina, The Ashen Witch —</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Site Footer -->
+      <footer class="site-footer">
+        <p>✦ Inspired by Majo no Tabitabi — The Wandering Witch ✦</p>
+      </footer>
+
+    </main>
+
+    <script>
+      // ===== PARTICLES GENERATOR =====
+      (function generateParticles() {
+        const container = document.getElementById('particles');
+        const colors = [
+          'rgba(245,215,126,0.7)', // gold
+          'rgba(212,207,232,0.6)', // ash
+          'rgba(126,203,159,0.5)', // green
+          'rgba(232,180,200,0.5)', // pink
+          'rgba(168,158,192,0.6)', // purple
+        ];
+        const count = 25;
+
+        for (let i = 0; i < count; i++) {
+          const p = document.createElement('div');
+          p.classList.add('particle');
+
+          const size = Math.random() * 4 + 1.5;
+          const color = colors[Math.floor(Math.random() * colors.length)];
+          const left = Math.random() * 100;
+          const duration = Math.random() * 15 + 10;
+          const delay = Math.random() * 15;
+
+          p.style.cssText = `
+            width: ${size}px;
+            height: ${size}px;
+            background: ${color};
+            left: ${left}%;
+            animation-duration: ${duration}s;
+            animation-delay: -${delay}s;
+            box-shadow: 0 0 ${size * 2}px ${color};
+          `;
+
+          container.appendChild(p);
+        }
+      })();
+
+      // ===== 3D CARD MOUSE TILT =====
+      (function initCardTilt() {
+        const card = document.getElementById('card3d');
+        if (!card) return;
+        if (window.innerWidth <= 480) return; // disable on mobile
+
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const cx = rect.left + rect.width / 2;
+          const cy = rect.top + rect.height / 2;
+          const dx = (e.clientX - cx) / (rect.width / 2);
+          const dy = (e.clientY - cy) / (rect.height / 2);
+          const rotX = -dy * 5;
+          const rotY = dx * 5;
+          card.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-5px)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = 'rotateX(0deg) rotateY(0deg) translateY(0)';
+          card.style.transition = 'transform 0.6s ease';
+        });
+
+        card.addEventListener('mouseenter', () => {
+          card.style.transition = 'transform 0.1s ease';
+        });
+      })();
+
+      // ===== MODAL FUNCTIONS =====
+      function openModal() {
+        const modal = document.getElementById('successModal');
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+
+        // Focus the close button for accessibility
+        setTimeout(() => {
+          document.getElementById('modalCloseBtn').focus();
+        }, 100);
+      }
+
+      function closeModal() {
+        const modal = document.getElementById('successModal');
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      // Close modal on overlay click
+      document.getElementById('successModal').addEventListener('click', function(e) {
+        if (e.target === this) closeModal();
+      });
+
+      // Close modal on Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeModal();
+      });
+
+      // ===== FORM SUBMISSION =====
+      document.getElementById('feedbackForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        const btn = document.getElementById('submitBtn');
+        const form = this;
+
+        // Show loading state
+        btn.classList.add('loading');
+        btn.disabled = true;
+
+        try {
+          const formData = new FormData(form);
+          const data = {};
+          formData.forEach((val, key) => { data[key] = val; });
+
+          // Remove the redirectTo field (we handle redirect ourselves)
+          delete data['redirectTo'];
+
+          const response = await fetch('https://api.staticforms.xyz/submit', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data),
+          });
+
+          if (response.ok || response.status === 200) {
+            // Reset form
+            form.reset();
+            // Show success modal
+            openModal();
+          } else {
+            const result = await response.json().catch(() => ({}));
+            alert(result.message || 'Terjadi kesalahan. Silakan coba lagi.');
+          }
+        } catch (err) {
+          // Network error fallback
+          console.error('Submit error:', err);
+          alert('Gagal mengirim pesan. Periksa koneksi internetmu dan coba lagi.');
+        } finally {
+          btn.classList.remove('loading');
+          btn.disabled = false;
+        }
+      });
+    </script>
+  </body>
+</html>
